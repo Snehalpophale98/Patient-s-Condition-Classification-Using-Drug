@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <title>Medical Condition Predictor and Drug Recommender </title>
+
+	<style>
+        .highlight {background-color: #FFFF00}
+
+        div {
+  font-size: 20px;
+}
+    </style>
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+<!--===============================================================================================-->
+      <style>
+p.round1 {
+
+  border-radius: 8px;
+
+  padding:3px;
+
+  text-align:center;
+  color:black;
+  background:#0C95F7;
+}
+
+p.round2 {
+
+  border-radius: 8px;
+
+  padding:3px;
+
+  text-align:center;
+  color:black;
+  background:#FC8F7D;
+}
+p.round3 {
+
+  border-radius: 8px;
+
+  padding:3px;
+
+  text-align:center;
+  color:black;
+  background:#2EEAFE;
+}
+
+      </style>
+    <script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<br>
+
+<form class="container" method="POST" action="/predict" enctype = "multipart/form-data">
+
+    <div class="form-group">
+        <label  class="font-weight-bold">Enter Medical issue for Getting Drug Recommendation : </label>
+
+        <textarea rows="5" cols="5" required="true" name="rawtext" class="form-control">
+		</textarea>
+
+    </div>
+
+    <br><br>
+
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg" type="submit" >Predict</button>
+    </div>
+    <br><br>
+
+
+
+</form>
+
+{% if show_predictions_modal %}
+
+<div class="card text-center" >
+        <div class="card-header">
+           Alert !!!
+        </div>
+        <div class="card-body">
+
+            <p id="old" class="card-text">
+
+             {{ err }}
+
+             <form action="/proceed" method="POST">
+    <button type="submit" name="view" value="Proceed"
+                            formmethod="post">Proceed</button>
+
+                </form>
+            </p>
+
+        </div>
+
+    </div>
+
+{% endif %}
+
+ {% block content %}
+    {% endblock %}
+<br><br>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js "
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous ">
+        </script>
+
+
+</body>
+</html>
